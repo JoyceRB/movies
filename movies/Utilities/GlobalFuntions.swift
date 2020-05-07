@@ -17,11 +17,30 @@ public func getMovieDetailsURL(_ id: Int) -> String {
     return Globals.BASE_URL + "movie/" + String(id) + "?api_key=" + Globals.TMDB_API_KEY + "&language=" + Globals.LANGUAGE + "&" + Globals.APPEND_CREDITS_TO_RESPONSE
 }
 
-public func fillMoviesList(_ completionHandler: @escaping (_ moviesList: JSON?) -> Void) {    
+public func fillMoviesList() {
     NetworkClient().getPopularMovies( { (popularMovies) in
         popularMovies!["results"].array?.forEach({ (popularMovie) in
-            NetworkClient().getMovieDetails(popularMovie["id"].intValue, { (movieDetails) in
-                completionHandler(movieDetails)
+            NetworkClient().getMovieDetails(popularMovie["id"].intValue, { (movieDetails) in                
+                let newMovie: Movie = Movie()
+                newMovie.id = movieDetails!["id"].intValue
+                newMovie.title = movieDetails!["title"].stringValue
+                newMovie.score = movieDetails!["vote_average"].doubleValue
+                newMovie.movieDescription = movieDetails!["overview"].stringValue
+                newMovie.posterPath = movieDetails!["poster_path"].stringValue
+                newMovie.date = getDateFromString(movieDetails!["release_date"].stringValue)
+                newMovie.duration = movieDetails!["runtime"].intValue
+                newMovie.backdropPosterPath = movieDetails!["backdrop_path"].stringValue
+                
+                movieDetails!["credits"]["crew"].array?.forEach({ ( crew ) in
+                    let directorJob = crew["job"]
+                    if (directorJob == "Director") {
+                        newMovie.director = crew["name"].stringValue
+                    }
+                })
+                
+                Globals.moviesList.append(newMovie)
+                
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateTable"), object: nil)
             })
         })
     })
@@ -39,19 +58,8 @@ public func getYearFromDate(_ date: Date) -> Int {
     return components.year!
 }
 
-
-public func getPosterImage(posterPath: String) -> UIImage? {
-    let url = URL(string: Globals.GET_IMAGE_URL + posterSize.small.rawValue + posterPath)
-    if let data = try? Data(contentsOf: url!) {
-        return UIImage(data: data)!
-    }
-    return nil
-}
-
-public func getBackdropImage(backdropPath: String) -> UIImage? {
-    let url = URL(string: Globals.GET_IMAGE_URL + backdropSize.medium.rawValue + backdropPath)
-    if let data = try? Data(contentsOf: url!) {
-        return UIImage(data: data)!
-    }
-    return nil
+public func getStringFromDate(date: Date, withFormat format: String) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = format
+    return dateFormatter.string(from: date)
 }

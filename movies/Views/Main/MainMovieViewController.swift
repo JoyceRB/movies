@@ -11,13 +11,7 @@ import UIKit
 class MainMovieViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var moviesTableView: UITableView!
-    var moviesList:[Movie] = []
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(MainMovieViewController.updateTable(_:)), for: .valueChanged)
-        refreshControl.tintColor = UIColor.systemBlue
-        return refreshControl
-    }()
+    var currentlySelectedIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,74 +19,41 @@ class MainMovieViewController: UIViewController, UITableViewDelegate, UITableVie
         moviesTableView.delegate = self
         moviesTableView.dataSource = self
         
-        moviesTableView.addSubview(refreshControl)
-//        self.view.addSubview(refreshControl)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTableView), name: NSNotification.Name(rawValue: "updateTable"), object: nil)
         
-//        if moviesList.count == 0 {
-//            fillMoviesList { (movieDetails) in
-//                let newMovie: Movie = Movie()
-//                newMovie.id = movieDetails!["id"].intValue
-//                newMovie.title = movieDetails!["title"].stringValue
-//                newMovie.score = movieDetails!["vote_average"].doubleValue
-//                newMovie.movieDescription = movieDetails!["overview"].stringValue
-//                newMovie.posterPath = movieDetails!["poster_path"].stringValue
-//                newMovie.date = getDateFromString(movieDetails!["release_date"].stringValue)
-//                newMovie.duration = movieDetails!["runtime"].intValue
-//                newMovie.backdropPosterPath = movieDetails!["backdrop_path"].stringValue
-//
-//                movieDetails!["credits"]["crew"].array?.forEach({ ( crew ) in
-//                    let directorJob = crew["job"]
-//                    if (directorJob == "Director") {
-//                        newMovie.director = crew["name"].stringValue
-//                    }
-//                })
-//                self.moviesList.append(newMovie)
-//            }
-//        }
-    }
-
-    @objc func updateTable(_ refreshControl: UIRefreshControl) {
-        if moviesList.count == 0 {
-            fillMoviesList { (movieDetails) in
-                let newMovie: Movie = Movie()
-                newMovie.id = movieDetails!["id"].intValue
-                newMovie.title = movieDetails!["title"].stringValue
-                newMovie.score = movieDetails!["vote_average"].doubleValue
-                newMovie.movieDescription = movieDetails!["overview"].stringValue
-                newMovie.posterPath = movieDetails!["poster_path"].stringValue
-                newMovie.date = getDateFromString(movieDetails!["release_date"].stringValue)
-                newMovie.duration = movieDetails!["runtime"].intValue
-                newMovie.backdropPosterPath = movieDetails!["backdrop_path"].stringValue
-
-                movieDetails!["credits"]["crew"].array?.forEach({ ( crew ) in
-                    let directorJob = crew["job"]
-                    if (directorJob == "Director") {
-                        newMovie.director = crew["name"].stringValue
-                    }
-                })
-                self.moviesList.append(newMovie)
-            }
+        if Globals.moviesList.count == 0 {
+            fillMoviesList()
         }
-        
+    }
+    
+    @objc func updateTableView () {
         moviesTableView.reloadData()
-        
-        refreshControl.endRefreshing()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        moviesList.count
+        Globals.moviesList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MainMovieTableViewCell
         
-        if moviesList.count > 0 {
-            cell.title?.text = moviesList[indexPath.row].title
-        }
+        cell.title?.text = Globals.moviesList[indexPath.row].title
+        cell.year?.text = String(getYearFromDate(Globals.moviesList[indexPath.row].date))
+        cell.director?.text = Globals.moviesList[indexPath.row].director
+        cell.score?.text = String(Globals.moviesList[indexPath.row].score)
+        
+        cell.moviePoster?.setImage(fromUrlString: Globals.GET_IMAGE_URL + posterSize.small.rawValue + Globals.moviesList[indexPath.row].posterPath)
         
         return cell
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = moviesTableView.indexPathForSelectedRow {
+            let selectedRow = indexPath.row
+            let movieDetailsVC = segue.destination as! MovieDetailsViewController
+            movieDetailsVC.movie = Globals.moviesList[selectedRow]
+        }
     }
 
 }
