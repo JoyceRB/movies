@@ -4,7 +4,7 @@
 //
 //  Created by Joyce Rosario Batista on 07/05/2020.
 //  Copyright © 2020 Joyce Rosario Batista. All rights reserved.
-//
+// Source: https://medium.com/@quangdecember/how-to-create-mock-server-response-in-ios-development-with-urlprotocol-d7376ace8b46
 
 import Foundation
 
@@ -17,7 +17,7 @@ class MockURLProtocol: URLProtocol {
         return request
     }
     override func stopLoading() {
-        
+
     }
     override func startLoading() {
         guard let handler = MockURLProtocol.requestHandler else {

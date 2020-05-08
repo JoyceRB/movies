@@ -9,8 +9,9 @@
 import Foundation
 
 public final class MockedData {
-    public static let botAvatarImageFileUrl: URL = Bundle(for: MockedData.self).url(forResource: "wetransfer_bot_avatar", withExtension: "png")!
     public static let populaMoviesJSON: URL = Bundle(for: MockedData.self).url(forResource: ApiFileStringKey.getPopularMovies.stringValue(), withExtension: "json")!
+    public static let movieDetailsJSON: URL = Bundle(for: MockedData.self).url(forResource: ApiFileStringKey.getMovieDetails.stringValue(), withExtension: "json")!
+    public static let noData: URL = Bundle(for: MockedData.self).url(forResource: "", withExtension: "json")!
 }
 
 internal extension URL {
