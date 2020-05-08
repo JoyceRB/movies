@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//This is a Singleton Class to save image in cache or get it from cache if already exists.
 class ImageCache {
     private let cache = NSCache<NSString, UIImage>()
     

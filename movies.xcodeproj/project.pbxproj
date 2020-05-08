@@ -12,6 +12,7 @@
 		E9225A7D2464C6AD0092D7D9 /* ApiFilesString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B623442464B72A00F621C2 /* ApiFilesString.swift */; };
 		E9225A7E2464C6AF0092D7D9 /* ResponseCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B623432464B72900F621C2 /* ResponseCodes.swift */; };
 		E9225A7F2464C6B30092D7D9 /* MockedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B623572464C21200F621C2 /* MockedData.swift */; };
+		E9311F9124658B1F00E4FE73 /* get_movie_details.json in Resources */ = {isa = PBXBuildFile; fileRef = E9311F9024658B1E00E4FE73 /* get_movie_details.json */; };
 		E9B622E32462F77C00F621C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B622E22462F77C00F621C2 /* AppDelegate.swift */; };
 		E9B622E52462F77C00F621C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B622E42462F77C00F621C2 /* SceneDelegate.swift */; };
 		E9B622EC2462F77E00F621C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9B622EB2462F77E00F621C2 /* Assets.xcassets */; };
@@ -32,7 +33,6 @@
 		E9B623452464B72A00F621C2 /* get_popular_movies.json in Resources */ = {isa = PBXBuildFile; fileRef = E9B623422464B72900F621C2 /* get_popular_movies.json */; };
 		E9B623462464B72A00F621C2 /* ResponseCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B623432464B72900F621C2 /* ResponseCodes.swift */; };
 		E9B623472464B72A00F621C2 /* ApiFilesString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B623442464B72A00F621C2 /* ApiFilesString.swift */; };
-		E9B623492464B7B700F621C2 /* get_movie_details.json in Resources */ = {isa = PBXBuildFile; fileRef = E9B623482464B7B700F621C2 /* get_movie_details.json */; };
 		E9B623562464C0BE00F621C2 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B623542464C07B00F621C2 /* MockURLProtocol.swift */; };
 		E9B623582464C21200F621C2 /* MockedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B623572464C21200F621C2 /* MockedData.swift */; };
 /* End PBXBuildFile section */
@@ -54,6 +54,7 @@
 		6960BB9341B6FF2EAB910D87 /* Pods-moviesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviesTests.release.xcconfig"; path = "Target Support Files/Pods-moviesTests/Pods-moviesTests.release.xcconfig"; sourceTree = "<group>"; };
 		78CCAAC703CC4DA88D5A7B81 /* Pods-movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-movies.release.xcconfig"; path = "Target Support Files/Pods-movies/Pods-movies.release.xcconfig"; sourceTree = "<group>"; };
 		7C0B1B3487921EA640FC93B6 /* Pods_movies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_movies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9311F9024658B1E00E4FE73 /* get_movie_details.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = get_movie_details.json; sourceTree = "<group>"; };
 		E9B622DF2462F77C00F621C2 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9B622E22462F77C00F621C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9B622E42462F77C00F621C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,7 +79,6 @@
 		E9B623422464B72900F621C2 /* get_popular_movies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = get_popular_movies.json; sourceTree = "<group>"; };
 		E9B623432464B72900F621C2 /* ResponseCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseCodes.swift; sourceTree = "<group>"; };
 		E9B623442464B72A00F621C2 /* ApiFilesString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiFilesString.swift; sourceTree = "<group>"; };
-		E9B623482464B7B700F621C2 /* get_movie_details.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = get_movie_details.json; sourceTree = "<group>"; };
 		E9B623542464C07B00F621C2 /* MockURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		E9B623572464C21200F621C2 /* MockedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -230,7 +230,7 @@
 				E9B623432464B72900F621C2 /* ResponseCodes.swift */,
 				E9B623572464C21200F621C2 /* MockedData.swift */,
 				E9B623422464B72900F621C2 /* get_popular_movies.json */,
-				E9B623482464B7B700F621C2 /* get_movie_details.json */,
+				E9311F9024658B1E00E4FE73 /* get_movie_details.json */,
 			);
 			path = JSONResponses;
 			sourceTree = "<group>";
@@ -341,7 +341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9B623492464B7B700F621C2 /* get_movie_details.json in Resources */,
+				E9311F9124658B1F00E4FE73 /* get_movie_details.json in Resources */,
 				E9B623452464B72A00F621C2 /* get_popular_movies.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,7 +519,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -573,7 +573,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -627,7 +627,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = moviesTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -649,7 +649,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = moviesTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

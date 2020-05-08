@@ -31,6 +31,8 @@ class moviesTests: XCTestCase {
         super.tearDown()
     }
     
+    // MARK: Network Tests:
+    
     func testGetPopularMovies() {
         let requestExpectation = expectation(description: "Get Popular Movies")
         
@@ -43,49 +45,41 @@ class moviesTests: XCTestCase {
         Movies.NetworkClient(withSession: mockSession).getPopularMovies { (popularMovies) in
             XCTAssertNotNil(popularMovies)
             XCTAssertEqual(popularMovies!["JoyceTest"].stringValue, "Joyce")
-            XCTAssertNotNil(popularMovies!["results"].array)
             let popularMoviesArray = popularMovies!["results"].array
+            XCTAssertNotNil(popularMoviesArray)
             XCTAssertTrue(popularMoviesArray![0]["video"].boolValue)
             requestExpectation.fulfill()
         }        
         wait(for: [requestExpectation], timeout: 10.0)
     }
     
-    func testGetPopularMoviesFail() {
-        let requestExpectation = expectation(description: "Get Popular Movies Fail")
+    func testGetMovieDetails() {
+        let requestExpectation = expectation(description: "Get Movie Details")
         
-        MockURLProtocol.requestHandler = { request in
-            let data = MockedData.noData.data
+       MockURLProtocol.requestHandler = { request in
+            let data = MockedData.movieDetailsJSON.data
             let response = HTTPURLResponse.init(url: request.url!, statusCode: ResponseCode.notFound.intValue(), httpVersion: "2.0", headerFields: nil)!
             return (response, data)
         }
         
-        Movies.NetworkClient(withSession: mockSession).getPopularMovies { (popularMovies) in
-           print(popularMovies)
-            requestExpectation.fulfill()
-        }
-        wait(for: [requestExpectation], timeout: 10.0)
-    }
-    
-    func testGetMovieDetails() {
-        let requestExpectation = expectation(description: "Get Movie Details")
-        
-        MockURLProtocol.requestHandler = { request in
-            let data = MockedData.movieDetailsJSON.data
-            let response = HTTPURLResponse.init(url: request.url!, statusCode: ResponseCode.success.intValue(), httpVersion: "2.0", headerFields: nil)!
-            return (response, data)
-        }
-        
-        Movies.NetworkClient(withSession: mockSession).getMovieDetails(1234, { (movie) in
-            print(movie)
+        Movies.NetworkClient(withSession: mockSession).getMovieDetails(1234, { (movieDetails) in
+            XCTAssertNotNil(movieDetails)
+            XCTAssertEqual(movieDetails!["JoyceTest"].stringValue, "Joyce")
+            XCTAssertEqual(movieDetails!["original_title"].stringValue, "Ad Astra")
+            XCTAssertFalse(movieDetails!["adult"].boolValue)
+            let crew = movieDetails!["credits"]["crew"].array
+            XCTAssertNotNil(crew)
+            XCTAssertEqual(crew![0]["name"].stringValue, "Brad Pitt")
             requestExpectation.fulfill()
         })
         
         wait(for: [requestExpectation], timeout: 10.0)
     }
     
-    func testDummy() {
-        XCTAssertTrue(true)
+    // MARK: Global functions tests:
+    
+    func testGetStringFromDate() {
+        XCTAssertNotNil(getStringFromDate(date: Date(), withFormat: "dd/MM/aaaa"))
     }
     
 }

@@ -1,5 +1,5 @@
 {
-    "JoyceTest": "JoyceTest"
+    "JoyceTest": "Joyce",
     "adult": false,
     "backdrop_path": "/5BwqwxMEjeFtdknRV792Svo0K1v.jpg",
     "belongs_to_collection": null,
@@ -20,7 +20,7 @@
     "original_language": "en",
     "original_title": "Ad Astra",
     "overview": "El futuro cercano, un tiempo en el que tanto la esperanza como la adversidad impulsan a la humanidad a mirar hacia las estrellas y más allá. Mientras un misterioso fenómeno amenaza con destruir la vida en el planeta Tierra, el astronauta Roy McBride emprende una misión a través de la inmensidad del espacio y sus muchos peligros para descubrir la verdad sobre una expedición perdida que décadas antes afrontó audazmente el vacío y el silencio en busca de lo desconocido.",
-    "popularity": 448.302,
+    "popularity": 482.963,
     "poster_path": "/kK6Oq4JywUNXmJ299efUkv1h6Mn.jpg",
     "production_companies": [
         {
@@ -98,7 +98,7 @@
     "title": "Ad astra",
     "video": false,
     "vote_average": 6,
-    "vote_count": 3271,
+    "vote_count": 3288,
     "credits": {
         "cast": [
             {

@@ -9,6 +9,7 @@
 import UIKit
 
 class Globals {
+
     static var moviesList = [Movie]()
     
     static let BASE_URL: String = "https://api.themoviedb.org/3/"    

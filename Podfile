@@ -5,7 +5,6 @@ use_frameworks!
 def movies_pods
   pod 'Alamofire', '~> 5.1'
   pod 'SwiftyJSON', '~> 4.0'
-#  pod 'Mocker', '~> 2.1.0'
 end
 
 target 'movies' do

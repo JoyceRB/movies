@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//This extension is to get an image from the cache if already exists or get it from a given URL and save it in the cache:
 extension UIImageView {
     func setImage(fromUrlString urlString: String) {
         if let cachedImage = ImageCache.shared.image(forKey: urlString) {
