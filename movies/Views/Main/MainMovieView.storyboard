@@ -125,7 +125,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Olx-ff-pdZ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zm1-Kc-3Od"/>
+                    <navigationItem key="navigationItem" id="zm1-Kc-3Od">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="A9c-gI-67W"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="moviesTableView" destination="g3b-3K-0jk" id="Me5-X0-UeC"/>
                     </connections>
@@ -165,4 +167,7 @@
             <point key="canvasLocation" x="1050.7246376811595" y="114.50892857142857"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu" width="12" height="12"/>
+    </resources>
 </document>

@@ -16,6 +16,6 @@ class Globals {
     static let LANGUAGE: String = "en-US"/*"es-ES"*/
     static let APPEND_CREDITS_TO_RESPONSE: String = "append_to_response=credits"
     
-    static let GET_IMAGE_URL: String = "http://image.tmdb.org/t/p/"
+    static let GET_IMAGE_URL: String = "https://image.tmdb.org/t/p/"
 
 }

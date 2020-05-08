@@ -7,28 +7,34 @@
 //
 
 import XCTest
-@testable import movies
+@testable import Movies
 
 class moviesTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    override class func setUp() {
+        super.setUp()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    override class func tearDown() {
+        super.tearDown()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testGetPopularMovies() {
+        let requestExpectation = expectation(description: "Get Popular Movies")
+        
+//        MockURLProtocol.requestHandler = { request in
+//            let data = MockedData.populaMoviesJSON.data
+//            let response = HTTPURLResponse.init(url: request.url!, statusCode: ResponseCode.success.intValue(), httpVersion: "2.0", headerFields: nil)!
+//            return (response, data)
+//        }
+        
+        NetworkClient().getPopularMovies { (popularMovies) in
+            print(popularMovies)
+            XCTAssertNotNil(popularMovies)
+            requestExpectation.fulfill()
         }
+        
+        wait(for: [requestExpectation], timeout: 10.0)
     }
-
+    
 }
