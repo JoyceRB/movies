@@ -32,8 +32,7 @@ public func fillMoviesList() {
                 newMovie.backdropPosterPath = movieDetails!["backdrop_path"].stringValue
                 
                 movieDetails!["credits"]["crew"].array?.forEach({ ( crew ) in
-                    let directorJob = crew["job"]
-                    if (directorJob == "Director") {
+                    if (crew["job"] == "Director") {
                         newMovie.director = crew["name"].stringValue
                     }
                 })

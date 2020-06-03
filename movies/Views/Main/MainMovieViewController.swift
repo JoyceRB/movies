@@ -11,7 +11,6 @@ import UIKit
 class MainMovieViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var moviesTableView: UITableView!
-    var currentlySelectedIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
